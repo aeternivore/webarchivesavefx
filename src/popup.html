@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Archiver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            background-color: #f7f7f7;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            background: #e0e0e0;
+            border-right: 1px solid #ccc;
+            color: #333;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab:hover {
+            background: #d0d0d0;
+        }
+
+        .tab.active {
+            background: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button#expandWindow {
+            background-color: #f39c12;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        ul li {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <button class="tab active" data-tab="archive">Archive</button>
+        <button class="tab" data-tab="history">History</button>
+        <button class="tab" data-tab="settings">Settings</button>
+    </div>
+
+    <div id="archive" class="tab-content active">
+        <h1>Link Archiver</h1>
+        <input type="text" id="url" placeholder="Enter URL">
+        <button id="archiveButton">Archive</button>
+        <button id="currentPageButton" style="background-color: orange;">Archive Current Page</button>
+        <p id="status"></p>
+    </div>
+
+    <div id="history" class="tab-content">
+        <h1>History</h1>
+        <ul id="historyList"></ul>
+        <button id="clearHistoryButton">Clear History</button>
+    </div>
+
+    <div id="settings" class="tab-content">
+        <h1>Settings</h1>
+        <label>
+            <input type="checkbox" id="disableAutoOpen">
+            Disable auto-opening of archived link
+        </label>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
